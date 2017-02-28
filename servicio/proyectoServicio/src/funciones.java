@@ -45,6 +45,15 @@ public class funciones extends mysql {
         
     }
     
+    void ingresaAsignadas(String[] mat, String text) throws SQLException {
+        this.abrir();
+        for(int i =0;i<mat.length;i++){
+        String query ="insert into asignadas values('"+text+"','"+mat[i]+"');";
+        this.ejecutar(query);
+        }
+        this.cerrar();
+    }
+    
     void actualizaOrientacion(String codigoR,String orientacion) throws SQLException {
         this.abrir();
         String query ="update orientacion set nombreOrientacion='"+orientacion+"' where codigoAlumno='"+codigoR+"' ";
@@ -172,6 +181,8 @@ public class funciones extends mysql {
        this.cerrar();
        return contador;
     }
+
+    
 
     
 
