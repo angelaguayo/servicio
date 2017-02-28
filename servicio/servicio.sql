@@ -1,12 +1,12 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-02-2017 a las 02:22:28
--- Versión del servidor: 10.1.19-MariaDB
--- Versión de PHP: 5.6.28
-
+-- Tiempo de generación: 01-03-2017 a las 00:14:05
+-- Versión del servidor: 10.1.21-MariaDB
+-- Versión de PHP: 7.1.1
+--update
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -42,6 +42,34 @@ INSERT INTO `alumno` (`codigoAlumno`, `nombre`, `apellido`, `edad`, `domicilio`)
 ('210030412', 'aguayo', 'aguayo', 23, 'avila camacho 192'),
 ('210030413', 'jose', 'gonzales', 22, 'tonala 32'),
 ('210040412', 'godinez', 'godinez', 22, 'cerro del 4 ');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `asignadas`
+--
+
+CREATE TABLE `asignadas` (
+  `codigoAlumno` varchar(20) NOT NULL,
+  `CRN` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `asignadas`
+--
+
+INSERT INTO `asignadas` (`codigoAlumno`, `CRN`) VALUES
+('210030412', '4444'),
+('210030412', '3333'),
+('210030412', '2222'),
+('210030413', '4444'),
+('210030413', 'null'),
+('210030413', 'null'),
+('210030413', 'null'),
+('210040412', '1111'),
+('210040412', '3333'),
+('210040412', '4444'),
+('210040412', 'null');
 
 -- --------------------------------------------------------
 
@@ -98,6 +126,16 @@ CREATE TABLE `materia` (
   `tipoOrientacion` varchar(20) DEFAULT NULL,
   `salon` varchar(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `materia`
+--
+
+INSERT INTO `materia` (`CRN`, `nombreAsignatura`, `tipoOrientacion`, `salon`) VALUES
+('1111', 'programacion 1', 'tronco comun', 'c105'),
+('2222', 'base de datos inteli', 'base de datos', 'c106'),
+('3333', 'programacion disposi', 'programacion', 'c107'),
+('4444', 'graficos 1', 'videojuegos', 'c108');
 
 -- --------------------------------------------------------
 
