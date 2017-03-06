@@ -124,9 +124,9 @@ public class materias extends javax.swing.JFrame {
               Statement  stmt = null; 
              
               
-              String sql = "SELECT materia.CRN,materia.nombreAsignatura, materia.tipoOrientacion, materia.salon " +
-                           "FROM alumno, materia, asignadas " +
-                           "WHERE alumno.codigoAlumno = asignadas.codigoAlumno and materia.CRN = asignadas.CRN and asignadas.codigoAlumno = '"+codigo.getText()+"';";
+              String sql = "SELECT materia.CRN,materia.nombreAsignatura, materia.tipoOrientacion, materia.salon "
+                      + "FROM alumno, materia, asignadas "
+                      + "WHERE alumno.codigoAlumno = asignadas.codigoAlumno and materia.CRN = asignadas.CRN and asignadas.codigoAlumno = '" + codigo.getText() + "';";
               try { 
                   String url = "jdbc:mysql://localhost:3306/servicio"; 
                   String usuario = "root"; 

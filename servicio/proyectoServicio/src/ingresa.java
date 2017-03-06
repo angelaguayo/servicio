@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.OptionPaneUI;
 import javax.swing.table.DefaultTableModel;
@@ -57,7 +58,7 @@ public class ingresa extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         codigo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTable1.setModel(modeloTabla);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -190,7 +191,13 @@ public class ingresa extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        for (int i = 0; i < mat.length; i++) {
+        
+        //
+        
+        int ax = JOptionPane.showConfirmDialog(null, "¿seguro que deseas agregar las materias del recuedro?");
+        
+        if(ax == JOptionPane.YES_OPTION){
+            for (int i = 0; i < mat.length; i++) {
             System.out.println(""+mat[i]);
         }
         
@@ -201,7 +208,24 @@ public class ingresa extends javax.swing.JFrame {
             Logger.getLogger(ingresa.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        JOptionPane.showMessageDialog(null, "materias agregadas con exito");
+        this.dispose();
+        }
+        else if(ax == JOptionPane.NO_OPTION){
+        for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+           modeloTabla.removeRow(i);
+           i-=1;
+       }
+        setFilas();
+        for(int j =0;j<modelo.getSize();j++){
+            modelo.removeElementAt(j);
+            j-=1;
+        }
+        counter=0;
         
+        }
+            
+      
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void compa(String[] mat, String nrc) {
@@ -307,6 +331,8 @@ public class ingresa extends javax.swing.JFrame {
     void pasacodigo(String text) {
         codigo.setText(text);
     }
+
+   
 
     
 }

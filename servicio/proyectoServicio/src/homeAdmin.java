@@ -13,7 +13,9 @@ import java.util.logging.*;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -81,10 +83,11 @@ public final class homeAdmin extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         busca = new javax.swing.JTextField();
-        COMBO = new javax.swing.JComboBox<>();
+        COMBO = new javax.swing.JComboBox<String>();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         lbmsj = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -146,7 +149,7 @@ public final class homeAdmin extends javax.swing.JFrame {
             }
         });
 
-        COMBO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "videojuegos", "base de datos", "programacion" }));
+        COMBO.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "videojuegos", "base de datos", "programacion" }));
 
         jButton4.setText("jButton4");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +167,13 @@ public final class homeAdmin extends javax.swing.JFrame {
 
         lbmsj.setBackground(new java.awt.Color(255, 255, 102));
         lbmsj.setText("jLabel6");
+
+        jButton6.setText("enviar mensaje");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -194,6 +204,7 @@ public final class homeAdmin extends javax.swing.JFrame {
                                 .addComponent(busca))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
@@ -207,8 +218,9 @@ public final class homeAdmin extends javax.swing.JFrame {
                                 .addGap(59, 59, 59)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txapellido))
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txapellido)
+                                .addGap(66, 66, 66)
+                                .addComponent(jButton6)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -239,7 +251,8 @@ public final class homeAdmin extends javax.swing.JFrame {
                     .addComponent(txapellido)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -521,6 +534,30 @@ public final class homeAdmin extends javax.swing.JFrame {
         mensajes msj = new mensajes();
         msj.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        JTextArea ta = new JTextArea(5, 15);
+        ta.setLineWrap(true); 
+        String mensaje="";
+        switch (JOptionPane.showConfirmDialog(null, new JScrollPane(ta))) {
+            case JOptionPane.OK_OPTION:
+                System.out.println(ta.getText());
+                mensaje=ta.getText();
+                String code=txcodigo.getText();
+                funciones fun = new funciones();
+        {
+            try {
+                fun.enviarMensajeAlumno(code,mensaje);
+            } catch (SQLException ex) {
+                Logger.getLogger(homeAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+            break;
+        }
+        
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
    
 
     public String[] getColumnas(){
@@ -626,6 +663,7 @@ public final class homeAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -47,9 +47,14 @@ public class funciones extends mysql {
     
     void ingresaAsignadas(String[] mat, String text) throws SQLException {
         this.abrir();
+        String query="";
         for(int i =0;i<mat.length;i++){
-        String query ="insert into asignadas values('"+text+"','"+mat[i]+"');";
-        this.ejecutar(query);
+            if (mat[i] != null) {
+                query ="insert into asignadas values('"+text+"','"+mat[i]+"');";
+                this.ejecutar(query);
+            }
+        
+        
         }
         this.cerrar();
     }
@@ -180,6 +185,38 @@ public class funciones extends mysql {
        
        this.cerrar();
        return contador;
+    }
+
+    int cuentamensajesAlumno() throws SQLException {
+       ResultSet rs=null;
+       int contador =0;
+       this.abrir();
+       Statement cmd = con.createStatement();
+       String query="select count(*) from mensajesAlumno;";
+       rs=cmd.executeQuery(query);
+       while (rs.next()) {
+            contador = rs.getInt("COUNT(*)");
+       }
+       
+       
+       this.cerrar();
+       return contador;
+    }
+    
+    void eliminarMateriaAlumno(String text) throws SQLException {
+        this.abrir();
+        String query = "delete from asignadas where asignadas.CRN = '"+text+"'";
+        this.ejecutar(query);
+        this.cerrar();
+    }
+
+    void enviarMensajeAlumno(String code, String mensaje) throws SQLException {
+        
+        this.abrir();
+        String query = "insert into mensajesAlumno values ( '"+code+"',null,'"+mensaje+"');";
+        this.ejecutar(query);
+        this.cerrar();
+        
     }
 
     
