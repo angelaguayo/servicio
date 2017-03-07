@@ -98,6 +98,7 @@ public class materiasPorAlumno extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         CRN = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -129,6 +130,13 @@ public class materiasPorAlumno extends javax.swing.JFrame {
 
         CRN.setText("...");
 
+        jButton3.setText("jButton3");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,7 +155,9 @@ public class materiasPorAlumno extends javax.swing.JFrame {
                                 .addGap(48, 48, 48)
                                 .addComponent(jButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2)))
+                                .addComponent(jButton2)
+                                .addGap(54, 54, 54)
+                                .addComponent(jButton3)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -163,7 +173,8 @@ public class materiasPorAlumno extends javax.swing.JFrame {
                     .addComponent(jButton2)
                     .addComponent(jButton1)
                     .addComponent(jLabel1)
-                    .addComponent(CRN))
+                    .addComponent(CRN)
+                    .addComponent(jButton3))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -198,6 +209,11 @@ public class materiasPorAlumno extends javax.swing.JFrame {
         ing.pasacodigo(codigo.getText());
         ing.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        setFilas();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,6 +255,7 @@ public class materiasPorAlumno extends javax.swing.JFrame {
     private javax.swing.JLabel codigo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

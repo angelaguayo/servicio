@@ -182,6 +182,7 @@ public class alumno extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         mensajesAlumno ma = new mensajesAlumno();
+        ma.pasacodigo(lbcodigo.getText());
         ma.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 

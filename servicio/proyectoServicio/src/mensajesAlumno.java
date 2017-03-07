@@ -49,9 +49,9 @@ public class mensajesAlumno extends javax.swing.JFrame {
     
         Connection con = null; 
               Statement  stmt = null; 
-              //String codi = lbcodigo.getText();
+              String codi = lbcodigo.getText();
               //System.out.println(""+codi);
-              String sql = "SELECT * FROM `mensajesAlumno`;";
+              String sql = "SELECT * FROM `mensajesAlumno` where codigoAlumno = '"+codi+"';";
               try { 
                   String url = "jdbc:mysql://localhost:3306/servicio"; 
                   String usuario = "root"; 
@@ -99,6 +99,7 @@ public class mensajesAlumno extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         msj = new javax.swing.JTextArea();
+        lbcodigo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -114,6 +115,8 @@ public class mensajesAlumno extends javax.swing.JFrame {
         msj.setRows(5);
         jScrollPane2.setViewportView(msj);
 
+        lbcodigo.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,14 +125,19 @@ public class mensajesAlumno extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbcodigo)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(lbcodigo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(34, Short.MAX_VALUE))
@@ -185,6 +193,11 @@ public class mensajesAlumno extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbcodigo;
     private javax.swing.JTextArea msj;
     // End of variables declaration//GEN-END:variables
+
+    void pasacodigo(String text) {
+        lbcodigo.setText(text);
+    }
 }
