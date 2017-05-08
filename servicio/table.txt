@@ -1,0 +1,11 @@
+create table login (codigoAlumno varchar(20), password varchar(20));
+create table alumno(codigoAlumno varchar(20), nombre varchar(20), apellido varchar(20), edad int(10), domicilio varchar(20), primary key (codigoAlumno));
+create table materia (CRN varchar(10), nombreAsignatura varhar(20), tipoOrientacion varchar(20),salon varchar(5), primary key (CRN));
+create table maestro(codigoMaestro varchar(20), nombre varchar(20), apellido varchar (20), primary key (codigoMaestro));
+create table orientacion (codigoAlumno varchar(20), nombreOrientacion varchar(20));
+create table turno(codigoAlumno varchar(20), turnoAlumno varchar(10));
+
+create table tipoDeTitulacion(codigoAlumno varchar(20), nombreTitulacion varchar(20));
+create table servicioSocial (codigoAlumno varchar(20), institucion varchar(20), concluido boolean));
+create table ingles (codigoAlumno varchar(20), aprovatorio boolean);
+ 
